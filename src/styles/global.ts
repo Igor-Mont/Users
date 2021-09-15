@@ -11,6 +11,11 @@ export default createGlobalStyle`
     min-height: 100%;
   }
 
+  body > #root {
+    display: flex;
+    justify-content: center;
+  }
+
   
 
 `;
