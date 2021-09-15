@@ -59,8 +59,53 @@ export const MainResponsive = styled.div`
     }
   }
 
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+    width: 100%;
+    height: auto;
+    padding: 64px 0;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      width: 80%;
+      padding: 16px;
+      background-color: red;
+
+      .input-box {
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        > input {
+          width: 90%;
+          height: 30px;
+          outline: 0;
+          padding: 0 8px;
+          border: 1px solid black;
+          border-right: none;
+        }
+        > div {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 10%;
+          height: 30px;
+          border: 1px solid black;
+          padding: 4px;
+          background-color: white;
+          border-left: none;
+        }
+      }
+    }
+  }
+
   @media (min-width: 1367px) {
     max-width: 1366px;
-    background-color: red;
   }
 `;

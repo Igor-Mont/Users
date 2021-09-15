@@ -1,5 +1,6 @@
 import React from 'react';
 import { MainResponsive } from '../../components/MainResponsive';
+import searchPeopleSVG from '../../assets/search-people.svg';
 
 // import { Container } from './styles';
 
@@ -23,14 +24,21 @@ function Home(): JSX.Element {
         </div>
       </header>
       <main>
-        <p />
-        <div>
-          <input type="text" />
-          <div>
-            <img src="" alt="" />
+        <div className="content">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+            consequatur, animi dicta dolorem sapiente ullam fugit vel doloremque
+            inventore aliquam veritatis velit distinctio possimus fugiat quos,
+            dolores hic quod eveniet.
+          </p>
+          <div className="input-box">
+            <input type="text" placeholder="Searching" />
+            <div>
+              <img src={searchPeopleSVG} alt="" />
+            </div>
           </div>
+          {/* table of users */}
         </div>
-        {/* table of users */}
       </main>
     </MainResponsive>
   );
