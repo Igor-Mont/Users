@@ -11,7 +11,7 @@ export const MainResponsive = styled.div`
   .bar {
     height: 30px;
     width: 100%;
-    background-color: grey;
+    background-color: #9eadba;
     display: flex;
     justify-content: flex-start;
     padding: 0 8px;
@@ -26,7 +26,7 @@ export const MainResponsive = styled.div`
         width: 10px;
         height: 10px;
         border-radius: 50%;
-        background-color: black;
+        background-color: #8f9eac;
       }
     }
   }
@@ -35,7 +35,6 @@ export const MainResponsive = styled.div`
     width: 100%;
     height: 70px;
     padding: 8px 32px;
-    background-color: blue;
     display: flex;
     justify-content: space-between;
 
@@ -63,7 +62,7 @@ export const MainResponsive = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: green;
+    background-color: #f7f9fa;
     width: 100%;
     height: auto;
     padding: 64px 0;
@@ -74,9 +73,9 @@ export const MainResponsive = styled.div`
       justify-content: center;
       align-items: center;
       gap: 16px;
-      width: 80%;
+      width: 70%;
       padding: 16px;
-      background-color: red;
+      background-color: #f7f9fa;
 
       .input-box {
         width: 80%;
@@ -100,6 +99,40 @@ export const MainResponsive = styled.div`
           padding: 4px;
           background-color: white;
           border-left: none;
+        }
+      }
+
+      .table {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+
+        .table-header {
+          > div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            width: 25%;
+            border: 1px solid blue;
+            text-align: center;
+          }
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .table-body {
+          display: flex;
+          text-align: center;
+
+          .line-body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 25%;
+            height: 25px;
+            border: 1px solid yellow;
+          }
         }
       }
     }

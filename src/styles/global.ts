@@ -9,6 +9,7 @@ export default createGlobalStyle`
 
   body {
     min-height: 100%;
+    font-family: 'Roboto';
   }
 
   body > #root {
