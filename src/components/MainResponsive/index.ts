@@ -36,20 +36,21 @@ export const MainResponsive = styled.div`
     height: 70px;
     padding: 8px 32px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
 
     .infos {
       display: flex;
       align-items: center;
       gap: 16px;
-      > img {
+      img {
         width: 54px;
         height: 54px;
       }
     }
 
     .user-avatar {
-      > img {
+      img {
         width: 54px;
         height: 54px;
 
@@ -140,5 +141,31 @@ export const MainResponsive = styled.div`
 
   @media (min-width: 1367px) {
     max-width: 1366px;
+  }
+
+  @media (max-width: 768px) {
+    main > .content {
+      width: 90%;
+    }
+  }
+
+  @media (max-width: 576px) {
+    header {
+      .user-avatar,
+      .infos {
+        img {
+          width: 44px;
+          height: 44px;
+        }
+      }
+    }
+
+    main > .content {
+      width: 95%;
+      .table {
+        width: 100%;
+        font-size: 0.85rem;
+      }
+    }
   }
 `;

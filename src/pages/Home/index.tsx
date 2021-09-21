@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { isPlusToken } from 'typescript';
 import { MainResponsive } from '../../components/MainResponsive';
 import searchPeopleSVG from '../../assets/search-people.svg';
 
@@ -22,10 +23,18 @@ type User = {
 
 function Home(): JSX.Element {
   const [users, setUsers] = useState<User[]>([]);
+  const [searchValue, setSearchValue] = useState('');
+  const filteredUsers = searchValue
+    ? users.filter(user => {
+        return user.name.first
+          .toLowerCase()
+          .includes(searchValue.toLowerCase());
+      })
+    : [...users];
 
   useEffect(() => {
     (async function getUser() {
-      const response = await fetch('https://randomuser.me/api/?results=5');
+      const response = await fetch('https://randomuser.me/api/?results=500');
       const data = await response.json();
       const { results } = data;
       setUsers(results);
@@ -41,6 +50,7 @@ function Home(): JSX.Element {
     return `${day}/${month}/${year}`;
   }
 
+  console.log(users[0].name.first.toLowerCase());
   return (
     <MainResponsive>
       <div className="bar">
@@ -68,7 +78,12 @@ function Home(): JSX.Element {
             dolores hic quod eveniet.
           </p>
           <div className="input-box">
-            <input type="text" placeholder="Searching" />
+            <input
+              type="text"
+              placeholder="Searching"
+              value={searchValue}
+              onChange={e => setSearchValue(e.target.value)}
+            />
             <div>
               <img src={searchPeopleSVG} alt="" />
             </div>
@@ -88,22 +103,23 @@ function Home(): JSX.Element {
                 <h3>Actions</h3>
               </div>
             </div>
-            {users.map(v => (
-              <div key={v.login.uuid} className="table-body">
-                <div className="line-body">
-                  <p>{v.name.first}</p>
+            {filteredUsers.length >= 1 &&
+              filteredUsers.map(v => (
+                <div key={v.login.uuid} className="table-body">
+                  <div className="line-body">
+                    <p>{v.name.first}</p>
+                  </div>
+                  <div className="line-body">
+                    <p>{v.gender.slice(0, 1).toUpperCase()}</p>
+                  </div>
+                  <div className="line-body">
+                    <p>{transformDateBirth(v.registered.date)}</p>
+                  </div>
+                  <div className="line-body">
+                    <p>Action</p>
+                  </div>
                 </div>
-                <div className="line-body">
-                  <p>{v.gender}</p>
-                </div>
-                <div className="line-body">
-                  <p>{transformDateBirth(v.registered.date)}</p>
-                </div>
-                <div className="line-body">
-                  <p>Action</p>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </main>
