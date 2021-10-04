@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { isPlusToken } from 'typescript';
+import ReactDOM from 'react-dom';
 import { MainResponsive } from '../../components/MainResponsive';
 import searchPeopleSVG from '../../assets/search-people.svg';
 
@@ -32,6 +32,13 @@ function Home(): JSX.Element {
       })
     : [...users];
 
+  function handleOpenModal() {
+    return ReactDOM.createPortal(
+      <div>Modal</div>,
+      document.getElementById('modal-root'),
+    );
+  }
+
   useEffect(() => {
     (async function getUser() {
       const response = await fetch('https://randomuser.me/api/?results=500');
@@ -50,7 +57,6 @@ function Home(): JSX.Element {
     return `${day}/${month}/${year}`;
   }
 
-  console.log(users[0].name.first.toLowerCase());
   return (
     <MainResponsive>
       <div className="bar">
@@ -90,16 +96,16 @@ function Home(): JSX.Element {
           </div>
           <div className="table">
             <div className="table-header">
-              <div className="h3">
+              <div>
                 <h3>Name</h3>
               </div>
-              <div className="h3">
+              <div>
                 <h3>Gender</h3>
               </div>
-              <div className="h3">
+              <div>
                 <h3>Birth</h3>
               </div>
-              <div className="h3">
+              <div>
                 <h3>Actions</h3>
               </div>
             </div>
@@ -115,8 +121,10 @@ function Home(): JSX.Element {
                   <div className="line-body">
                     <p>{transformDateBirth(v.registered.date)}</p>
                   </div>
-                  <div className="line-body">
-                    <p>Action</p>
+                  <div className="line-body-action">
+                    <button type="button" onClick={handleOpenModal}>
+                      More Infos
+                    </button>
                   </div>
                 </div>
               ))}

@@ -115,8 +115,9 @@ export const MainResponsive = styled.div`
             align-items: center;
             height: 30px;
             width: 25%;
-            border: 1px solid blue;
+            border: 1px solid #9eadba;
             text-align: center;
+            padding: 16px;
           }
           display: flex;
           justify-content: space-between;
@@ -127,14 +128,36 @@ export const MainResponsive = styled.div`
           text-align: center;
 
           .line-body {
+            padding: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             width: 25%;
             height: 25px;
-            border: 1px solid yellow;
+            border: 1px solid #9eadba;
+          }
+
+          .line-body-action {
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 25%;
+            background-color: #e1e3e5;
+            height: 25px;
+            border: 1px solid #9eadba;
+            &:hover {
+              background-color: #9eadba;
+            }
           }
         }
+      }
+      button {
+        padding: 4px 8px;
+        border: none;
+        border-radius: 8px;
+        background-color: #e1e3e5;
+        cursor: pointer;
       }
     }
   }
