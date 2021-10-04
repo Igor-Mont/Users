@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { MainResponsive } from '../../components/MainResponsive';
 import searchPeopleSVG from '../../assets/search-people.svg';
+import Modal from '../../components/Modal';
 
 // import { Container } from './styles';
 
@@ -32,12 +33,7 @@ function Home(): JSX.Element {
       })
     : [...users];
 
-  function handleOpenModal() {
-    return ReactDOM.createPortal(
-      <div>Modal</div>,
-      document.getElementById('modal-root'),
-    );
-  }
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     (async function getUser() {
@@ -59,6 +55,7 @@ function Home(): JSX.Element {
 
   return (
     <MainResponsive>
+      {modalOpen && <Modal isOpen={modalOpen} closeModal={setModalOpen} />}
       <div className="bar">
         <div className="box-balls">
           <div className="ball" />
@@ -122,7 +119,10 @@ function Home(): JSX.Element {
                     <p>{transformDateBirth(v.registered.date)}</p>
                   </div>
                   <div className="line-body-action">
-                    <button type="button" onClick={handleOpenModal}>
+                    <button
+                      type="button"
+                      onClick={() => setModalOpen(!modalOpen)}
+                    >
                       More Infos
                     </button>
                   </div>
