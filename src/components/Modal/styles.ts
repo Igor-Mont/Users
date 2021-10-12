@@ -22,5 +22,42 @@ export const Container = styled.div`
     justify-content: space-between;
     flex-direction: column;
     align-items: center;
+    border-radius: 8px;
+
+    button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #9eadba;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #e1e3e5;
+      }
+    }
+  }
+
+  .content-top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  .infos {
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    h3 {
+      display: flex;
+    }
+    span {
+      font-weight: 300;
+    }
   }
 `;

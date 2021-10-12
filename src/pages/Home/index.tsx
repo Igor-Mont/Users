@@ -20,10 +20,17 @@ type User = {
     date: string;
     age: number;
   };
+  email: string;
+  phone: string;
+  cell: string;
+  picture: {
+    medium: string;
+  };
 };
 
 function Home(): JSX.Element {
   const [users, setUsers] = useState<User[]>([]);
+  const [userSelected, setUserSelected] = useState<User>();
   const [searchValue, setSearchValue] = useState('');
   const filteredUsers = searchValue
     ? users.filter(user => {
@@ -55,7 +62,6 @@ function Home(): JSX.Element {
 
   return (
     <MainResponsive>
-      {modalOpen && <Modal isOpen={modalOpen} closeModal={setModalOpen} />}
       <div className="bar">
         <div className="box-balls">
           <div className="ball" />
@@ -121,13 +127,23 @@ function Home(): JSX.Element {
                   <div className="line-body-action">
                     <button
                       type="button"
-                      onClick={() => setModalOpen(!modalOpen)}
+                      onClick={() => {
+                        setModalOpen(!modalOpen);
+                        setUserSelected(v);
+                      }}
                     >
                       More Infos
                     </button>
                   </div>
                 </div>
               ))}
+            {modalOpen && (
+              <Modal
+                user={userSelected}
+                isOpen={modalOpen}
+                closeModal={setModalOpen}
+              />
+            )}
           </div>
         </div>
       </main>
